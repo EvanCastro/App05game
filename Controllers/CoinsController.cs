@@ -28,19 +28,34 @@ namespace App05MonoGame.Controllers
     {
         private Random generator = new Random();
 
+        private double maxTime = 3.0;
+        private double elapsedTime = 0;
+
+        private Texture2D coinSheet;
+        private GraphicsDevice graphics;
+
         private readonly List<AnimatedSprite> Coins;        
 
         public CoinsController()
         {
             Coins = new List<AnimatedSprite>();
         }
+
         /// <summary>
         /// Create an animated sprite of a copper coin
         /// which could be collected by the player for a score
         /// </summary>
-        public void CreateCoin(GraphicsDevice graphics, Texture2D coinSheet)
+        public void CreateFirstCoin(GraphicsDevice graphics, Texture2D coinSheet)
         {
+            this.graphics = graphics;
+            this.coinSheet = coinSheet;
+
             SoundController.PlaySoundEffect(Sounds.Coins);
+            CreateNewCoin();
+        }
+
+        public void CreateNewCoin()
+        {
             Animation animation = new Animation(graphics, "coin", coinSheet, 8);
 
             AnimatedSprite coin = new AnimatedSprite()
@@ -78,6 +93,15 @@ namespace App05MonoGame.Controllers
         {
             // TODO: create more coins every so often??
             // or recyle collected coins
+
+            elapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
+
+            if(elapsedTime >= maxTime)
+            {
+                // TODO: create and add a new coin
+                CreateNewCoin();
+                elapsedTime = 0;
+            }
 
             foreach(AnimatedSprite coin in Coins)
             {

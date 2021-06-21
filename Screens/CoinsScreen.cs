@@ -58,7 +58,7 @@ namespace App05MonoGame.Screens
             coinsController = new CoinsController();
 
             Texture2D coinSheet = game.Content.Load<Texture2D>("Actors/coin_copper");
-            coinsController.CreateCoin(game.Graphics, coinSheet);
+            coinsController.CreateFirstCoin(game.Graphics, coinSheet);
         }
 
         /// <summary>
