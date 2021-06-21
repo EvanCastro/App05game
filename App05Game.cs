@@ -114,7 +114,7 @@ namespace App05MonoGame
             // Load Music and SoundEffects
 
             SoundController.LoadContent(Content);
-            SoundController.PlaySong("Adventure");
+            //SoundController.PlaySong("Adventure");
 
             startScreen = new StartScreen(this);
         }
@@ -138,6 +138,7 @@ namespace App05MonoGame
                 case GameStates.Starting:
                     startScreen.Update(gameTime); 
                     break;
+                
                 case GameStates.PlayingLevel1:
                     if (coinsScreen == null)
                         coinsScreen = new CoinsScreen(this);
@@ -194,6 +195,7 @@ namespace App05MonoGame
             }
 
             spriteBatch.End();
+
             base.Draw(gameTime);
         }
 

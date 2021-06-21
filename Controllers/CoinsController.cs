@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 
@@ -25,6 +26,7 @@ namespace App05MonoGame.Controllers
     public class CoinsController : IUpdateableInterface, 
         IDrawableInterface, ICollideableInterface
     {
+        private Random generator = new Random();
 
         private readonly List<AnimatedSprite> Coins;        
 
